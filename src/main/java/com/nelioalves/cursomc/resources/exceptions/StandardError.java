@@ -1,6 +1,7 @@
 package com.nelioalves.cursomc.resources.exceptions;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class StandardError implements Serializable{
 
@@ -8,9 +9,9 @@ public class StandardError implements Serializable{
 	
 	private Integer status;
 	private String msg;
-	private Long timeStamp;
+	private Date timeStamp;
 
-	public StandardError(Integer status, String msg, Long timeStamp) {
+	public StandardError(Integer status, String msg, Date timeStamp) {
 		super();
 		this.status = status;
 		this.msg = msg;
@@ -33,11 +34,11 @@ public class StandardError implements Serializable{
 		this.msg = msg;
 	}
 
-	public Long getTimeStamp() {
+	public Date getTimeStamp() {
 		return timeStamp;
 	}
 
-	public void setTimeStamp(Long timeStamp) {
+	public void setTimeStamp(Date timeStamp) {
 		this.timeStamp = timeStamp;
 	}
 	
