@@ -11,9 +11,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import com.nelioalves.cursomc.domain.enums.Perfil;
 
 public class UserSS implements UserDetails {
-
 	private static final long serialVersionUID = 1L;
-
+	
 	private Integer id;
 	private String email;
 	private String senha;
@@ -36,20 +35,17 @@ public class UserSS implements UserDetails {
 	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		// TODO Auto-generated method stub
-		return null;
+		return authorities;
 	}
 
 	@Override
 	public String getPassword() {
-		// TODO Auto-generated method stub
-		return null;
+		return senha;
 	}
 
 	@Override
 	public String getUsername() {
-		// TODO Auto-generated method stub
-		return null;
+		return email;
 	}
 
 	@Override
@@ -71,7 +67,4 @@ public class UserSS implements UserDetails {
 	public boolean isEnabled() {
 		return true;
 	}
-	
-	
-
 }

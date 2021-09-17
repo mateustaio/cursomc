@@ -26,10 +26,10 @@ import com.nelioalves.cursomc.security.JWTUtil;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
-    private Environment env;
+	private UserDetailsService userDetailsService;
 	
 	@Autowired
-	private UserDetailsService userDetailsService;
+    private Environment env;
 	
 	@Autowired
 	private JWTUtil jwtUtil;

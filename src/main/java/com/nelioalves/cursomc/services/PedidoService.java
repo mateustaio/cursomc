@@ -22,30 +22,27 @@ public class PedidoService {
 	private PedidoRepository repo;
 	
 	@Autowired
-	private EmailService emailService;
+	private BoletoService boletoService;
 	
 	@Autowired
-	private BoletoService boletoService;
-
-	@Autowired
 	private PagamentoRepository pagamentoRepository;
-
+	
 	@Autowired
 	private ItemPedidoRepository itemPedidoRepository;
-
+	
 	@Autowired
 	private ProdutoService produtoService;
 	
 	@Autowired
 	private ClienteService clienteService;
 	
+	@Autowired
+	private EmailService emailService;
+	
 	public Pedido find(Integer id) {
 		Optional<Pedido> obj = repo.findById(id);
-		if(obj.isEmpty()) {
-			throw new ObjectNotFoundException("Objeto nao encontrado! Id: "
-					+ id + ", Tipo: " + Pedido.class.getName());
-		}
-		return obj.get(); 
+		return obj.orElseThrow(() -> new ObjectNotFoundException(
+				"Objeto não encontrado! Id: " + id + ", Tipo: " + Pedido.class.getName()));
 	}
 	
 	public Pedido insert(Pedido obj) {
@@ -67,8 +64,7 @@ public class PedidoService {
 			ip.setPedido(obj);
 		}
 		itemPedidoRepository.saveAll(obj.getItens());
-		emailService.sendOrderConfirmationHtmlEmail(obj);
+		emailService.sendOrderConfirmationEmail(obj);
 		return obj;
 	}
-
 }

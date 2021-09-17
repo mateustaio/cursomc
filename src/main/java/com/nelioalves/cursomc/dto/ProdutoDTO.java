@@ -4,8 +4,7 @@ import java.io.Serializable;
 
 import com.nelioalves.cursomc.domain.Produto;
 
-public class ProdutoDTO  implements Serializable {
-
+public class ProdutoDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private Integer id;
@@ -14,13 +13,13 @@ public class ProdutoDTO  implements Serializable {
 	
 	public ProdutoDTO() {
 	}
-	
+
 	public ProdutoDTO(Produto obj) {
 		id = obj.getId();
 		nome = obj.getNome();
 		preco = obj.getPreco();
 	}
-
+	
 	public Integer getId() {
 		return id;
 	}

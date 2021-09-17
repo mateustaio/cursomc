@@ -8,11 +8,10 @@ import com.nelioalves.cursomc.domain.enums.EstadoPagamento;
 @Entity
 @JsonTypeName("pagamentoComCartao")
 public class PagamentoComCartao extends Pagamento {
-	
 	private static final long serialVersionUID = 1L;
-	
-	private Integer numeroDeParcelas;
 
+	private Integer numeroDeParcelas;
+	
 	public PagamentoComCartao() {
 	}
 
@@ -30,4 +29,5 @@ public class PagamentoComCartao extends Pagamento {
 	}
 	
 	
+		
 }
