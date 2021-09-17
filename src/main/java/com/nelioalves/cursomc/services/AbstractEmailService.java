@@ -15,8 +15,8 @@ import org.thymeleaf.context.Context;
 
 import com.nelioalves.cursomc.domain.Pedido;
 
-public abstract class AbstractEmailService implements EmailService{
-
+public abstract class AbstractEmailService implements EmailService {
+	
 	@Value("${default.sender}")
 	private String sender;
 	
@@ -36,7 +36,7 @@ public abstract class AbstractEmailService implements EmailService{
 		SimpleMailMessage sm = new SimpleMailMessage();
 		sm.setTo(obj.getCliente().getEmail());
 		sm.setFrom(sender);
-		sm.setSubject("Pedido confirmado! Codigo: " + obj.getId());
+		sm.setSubject("Pedido confirmado! Código: " + obj.getId());
 		sm.setSentDate(new Date(System.currentTimeMillis()));
 		sm.setText(obj.toString());
 		return sm;
@@ -53,7 +53,8 @@ public abstract class AbstractEmailService implements EmailService{
 		try {
 			MimeMessage mm = prepareMimeMessageFromPedido(obj);
 			sendHtmlEmail(mm);
-		} catch (MessagingException e) {
+		}
+		catch (MessagingException e) {
 			sendOrderConfirmationEmail(obj);
 		}
 	}
@@ -63,7 +64,7 @@ public abstract class AbstractEmailService implements EmailService{
 		MimeMessageHelper mmh = new MimeMessageHelper(mimeMessage, true);
 		mmh.setTo(obj.getCliente().getEmail());
 		mmh.setFrom(sender);
-		mmh.setSubject("Pedido confirmado! Codigo: " + obj.getId());
+		mmh.setSubject("Pedido confirmado! Código: " + obj.getId());
 		mmh.setSentDate(new Date(System.currentTimeMillis()));
 		mmh.setText(htmlFromTemplatePedido(obj), true);
 		return mimeMessage;
